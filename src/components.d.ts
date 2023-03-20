@@ -7,18 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    }
+    interface MyLifecycle {
     }
 }
 declare global {
@@ -28,27 +18,25 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLMyLifecycleElement extends Components.MyLifecycle, HTMLStencilElement {
+    }
+    var HTMLMyLifecycleElement: {
+        prototype: HTMLMyLifecycleElement;
+        new (): HTMLMyLifecycleElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "my-lifecycle": HTMLMyLifecycleElement;
     }
 }
 declare namespace LocalJSX {
     interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    }
+    interface MyLifecycle {
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "my-lifecycle": MyLifecycle;
     }
 }
 export { LocalJSX as JSX };
@@ -56,6 +44,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-lifecycle": LocalJSX.MyLifecycle & JSXBase.HTMLAttributes<HTMLMyLifecycleElement>;
         }
     }
 }
