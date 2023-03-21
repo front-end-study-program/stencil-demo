@@ -18,5 +18,15 @@
       <h2>2.组件</h2>
       <my-component></my-component>
     </div>
+    <div>
+      <h2>3.事件</h2>
+      <my-events></my-events>
+    </div>
+    <script>
+      const eventDom = document.querySelector('my-events')
+      eventDom.addEventListener('changeCompleted', (e, val) => {
+        console.log(e.detail, 'changeCompleted')
+      })
+    </script>
   </body>
 </html>
