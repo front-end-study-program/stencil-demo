@@ -10,6 +10,8 @@ export namespace Components {
     }
     interface MyEvents {
     }
+    interface MyFunctionComponent {
+    }
     interface MyLifecycle {
     }
 }
@@ -30,6 +32,12 @@ declare global {
         prototype: HTMLMyEventsElement;
         new (): HTMLMyEventsElement;
     };
+    interface HTMLMyFunctionComponentElement extends Components.MyFunctionComponent, HTMLStencilElement {
+    }
+    var HTMLMyFunctionComponentElement: {
+        prototype: HTMLMyFunctionComponentElement;
+        new (): HTMLMyFunctionComponentElement;
+    };
     interface HTMLMyLifecycleElement extends Components.MyLifecycle, HTMLStencilElement {
     }
     var HTMLMyLifecycleElement: {
@@ -39,6 +47,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "my-events": HTMLMyEventsElement;
+        "my-function-component": HTMLMyFunctionComponentElement;
         "my-lifecycle": HTMLMyLifecycleElement;
     }
 }
@@ -48,11 +57,14 @@ declare namespace LocalJSX {
     interface MyEvents {
         "onChangeCompleted"?: (event: MyEventsCustomEvent<boolean>) => void;
     }
+    interface MyFunctionComponent {
+    }
     interface MyLifecycle {
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
         "my-events": MyEvents;
+        "my-function-component": MyFunctionComponent;
         "my-lifecycle": MyLifecycle;
     }
 }
@@ -62,6 +74,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "my-events": LocalJSX.MyEvents & JSXBase.HTMLAttributes<HTMLMyEventsElement>;
+            "my-function-component": LocalJSX.MyFunctionComponent & JSXBase.HTMLAttributes<HTMLMyFunctionComponentElement>;
             "my-lifecycle": LocalJSX.MyLifecycle & JSXBase.HTMLAttributes<HTMLMyLifecycleElement>;
         }
     }
