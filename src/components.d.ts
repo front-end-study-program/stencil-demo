@@ -12,6 +12,9 @@ export namespace Components {
     }
     interface MyFunctionComponent {
     }
+    interface MyHostElement {
+        "open": boolean;
+    }
     interface MyLifecycle {
     }
 }
@@ -38,6 +41,12 @@ declare global {
         prototype: HTMLMyFunctionComponentElement;
         new (): HTMLMyFunctionComponentElement;
     };
+    interface HTMLMyHostElementElement extends Components.MyHostElement, HTMLStencilElement {
+    }
+    var HTMLMyHostElementElement: {
+        prototype: HTMLMyHostElementElement;
+        new (): HTMLMyHostElementElement;
+    };
     interface HTMLMyLifecycleElement extends Components.MyLifecycle, HTMLStencilElement {
     }
     var HTMLMyLifecycleElement: {
@@ -48,6 +57,7 @@ declare global {
         "my-component": HTMLMyComponentElement;
         "my-events": HTMLMyEventsElement;
         "my-function-component": HTMLMyFunctionComponentElement;
+        "my-host-element": HTMLMyHostElementElement;
         "my-lifecycle": HTMLMyLifecycleElement;
     }
 }
@@ -59,12 +69,16 @@ declare namespace LocalJSX {
     }
     interface MyFunctionComponent {
     }
+    interface MyHostElement {
+        "open"?: boolean;
+    }
     interface MyLifecycle {
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
         "my-events": MyEvents;
         "my-function-component": MyFunctionComponent;
+        "my-host-element": MyHostElement;
         "my-lifecycle": MyLifecycle;
     }
 }
@@ -75,6 +89,7 @@ declare module "@stencil/core" {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "my-events": LocalJSX.MyEvents & JSXBase.HTMLAttributes<HTMLMyEventsElement>;
             "my-function-component": LocalJSX.MyFunctionComponent & JSXBase.HTMLAttributes<HTMLMyFunctionComponentElement>;
+            "my-host-element": LocalJSX.MyHostElement & JSXBase.HTMLAttributes<HTMLMyHostElementElement>;
             "my-lifecycle": LocalJSX.MyLifecycle & JSXBase.HTMLAttributes<HTMLMyLifecycleElement>;
         }
     }
