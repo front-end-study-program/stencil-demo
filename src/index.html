@@ -36,5 +36,16 @@
       <h2>5.Host根标签</h2>
       <my-host-element prop="true">host</my-host-element>
     </div>
+    <div>
+      <h2>6.Methods</h2>
+      <my-methods>出现啦</my-methods>
+      <button onclick="change()">改变</button>
+    </div>
+    <script>
+      const methodsDom = document.querySelector('my-methods')
+      function change() {
+        methodsDom.changeOpen()
+      }
+    </script>
   </body>
 </html>

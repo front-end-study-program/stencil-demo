@@ -17,6 +17,9 @@ export namespace Components {
     }
     interface MyLifecycle {
     }
+    interface MyMethods {
+        "changeOpen": () => Promise<void>;
+    }
 }
 export interface MyEventsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -53,12 +56,19 @@ declare global {
         prototype: HTMLMyLifecycleElement;
         new (): HTMLMyLifecycleElement;
     };
+    interface HTMLMyMethodsElement extends Components.MyMethods, HTMLStencilElement {
+    }
+    var HTMLMyMethodsElement: {
+        prototype: HTMLMyMethodsElement;
+        new (): HTMLMyMethodsElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "my-events": HTMLMyEventsElement;
         "my-function-component": HTMLMyFunctionComponentElement;
         "my-host-element": HTMLMyHostElementElement;
         "my-lifecycle": HTMLMyLifecycleElement;
+        "my-methods": HTMLMyMethodsElement;
     }
 }
 declare namespace LocalJSX {
@@ -74,12 +84,15 @@ declare namespace LocalJSX {
     }
     interface MyLifecycle {
     }
+    interface MyMethods {
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
         "my-events": MyEvents;
         "my-function-component": MyFunctionComponent;
         "my-host-element": MyHostElement;
         "my-lifecycle": MyLifecycle;
+        "my-methods": MyMethods;
     }
 }
 export { LocalJSX as JSX };
@@ -91,6 +104,7 @@ declare module "@stencil/core" {
             "my-function-component": LocalJSX.MyFunctionComponent & JSXBase.HTMLAttributes<HTMLMyFunctionComponentElement>;
             "my-host-element": LocalJSX.MyHostElement & JSXBase.HTMLAttributes<HTMLMyHostElementElement>;
             "my-lifecycle": LocalJSX.MyLifecycle & JSXBase.HTMLAttributes<HTMLMyLifecycleElement>;
+            "my-methods": LocalJSX.MyMethods & JSXBase.HTMLAttributes<HTMLMyMethodsElement>;
         }
     }
 }
