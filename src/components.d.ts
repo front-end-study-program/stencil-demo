@@ -20,6 +20,10 @@ export namespace Components {
     interface MyMethods {
         "changeOpen": () => Promise<void>;
     }
+    interface MyProperties {
+        "isDone": boolean;
+        "name": string;
+    }
 }
 export interface MyEventsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -62,6 +66,12 @@ declare global {
         prototype: HTMLMyMethodsElement;
         new (): HTMLMyMethodsElement;
     };
+    interface HTMLMyPropertiesElement extends Components.MyProperties, HTMLStencilElement {
+    }
+    var HTMLMyPropertiesElement: {
+        prototype: HTMLMyPropertiesElement;
+        new (): HTMLMyPropertiesElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "my-events": HTMLMyEventsElement;
@@ -69,6 +79,7 @@ declare global {
         "my-host-element": HTMLMyHostElementElement;
         "my-lifecycle": HTMLMyLifecycleElement;
         "my-methods": HTMLMyMethodsElement;
+        "my-properties": HTMLMyPropertiesElement;
     }
 }
 declare namespace LocalJSX {
@@ -86,6 +97,10 @@ declare namespace LocalJSX {
     }
     interface MyMethods {
     }
+    interface MyProperties {
+        "isDone"?: boolean;
+        "name": string;
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
         "my-events": MyEvents;
@@ -93,6 +108,7 @@ declare namespace LocalJSX {
         "my-host-element": MyHostElement;
         "my-lifecycle": MyLifecycle;
         "my-methods": MyMethods;
+        "my-properties": MyProperties;
     }
 }
 export { LocalJSX as JSX };
@@ -105,6 +121,7 @@ declare module "@stencil/core" {
             "my-host-element": LocalJSX.MyHostElement & JSXBase.HTMLAttributes<HTMLMyHostElementElement>;
             "my-lifecycle": LocalJSX.MyLifecycle & JSXBase.HTMLAttributes<HTMLMyLifecycleElement>;
             "my-methods": LocalJSX.MyMethods & JSXBase.HTMLAttributes<HTMLMyMethodsElement>;
+            "my-properties": LocalJSX.MyProperties & JSXBase.HTMLAttributes<HTMLMyPropertiesElement>;
         }
     }
 }
