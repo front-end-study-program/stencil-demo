@@ -24,6 +24,9 @@ export namespace Components {
         "isDone": boolean;
         "name": string;
     }
+    interface MyReactiveData {
+        "activated": boolean;
+    }
 }
 export interface MyEventsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -72,6 +75,12 @@ declare global {
         prototype: HTMLMyPropertiesElement;
         new (): HTMLMyPropertiesElement;
     };
+    interface HTMLMyReactiveDataElement extends Components.MyReactiveData, HTMLStencilElement {
+    }
+    var HTMLMyReactiveDataElement: {
+        prototype: HTMLMyReactiveDataElement;
+        new (): HTMLMyReactiveDataElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "my-events": HTMLMyEventsElement;
@@ -80,6 +89,7 @@ declare global {
         "my-lifecycle": HTMLMyLifecycleElement;
         "my-methods": HTMLMyMethodsElement;
         "my-properties": HTMLMyPropertiesElement;
+        "my-reactive-data": HTMLMyReactiveDataElement;
     }
 }
 declare namespace LocalJSX {
@@ -101,6 +111,9 @@ declare namespace LocalJSX {
         "isDone"?: boolean;
         "name": string;
     }
+    interface MyReactiveData {
+        "activated"?: boolean;
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
         "my-events": MyEvents;
@@ -109,6 +122,7 @@ declare namespace LocalJSX {
         "my-lifecycle": MyLifecycle;
         "my-methods": MyMethods;
         "my-properties": MyProperties;
+        "my-reactive-data": MyReactiveData;
     }
 }
 export { LocalJSX as JSX };
@@ -122,6 +136,7 @@ declare module "@stencil/core" {
             "my-lifecycle": LocalJSX.MyLifecycle & JSXBase.HTMLAttributes<HTMLMyLifecycleElement>;
             "my-methods": LocalJSX.MyMethods & JSXBase.HTMLAttributes<HTMLMyMethodsElement>;
             "my-properties": LocalJSX.MyProperties & JSXBase.HTMLAttributes<HTMLMyPropertiesElement>;
+            "my-reactive-data": LocalJSX.MyReactiveData & JSXBase.HTMLAttributes<HTMLMyReactiveDataElement>;
         }
     }
 }
