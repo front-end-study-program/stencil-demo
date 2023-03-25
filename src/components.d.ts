@@ -27,6 +27,8 @@ export namespace Components {
     interface MyReactiveData {
         "activated": boolean;
     }
+    interface MyState {
+    }
 }
 export interface MyEventsCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -81,6 +83,12 @@ declare global {
         prototype: HTMLMyReactiveDataElement;
         new (): HTMLMyReactiveDataElement;
     };
+    interface HTMLMyStateElement extends Components.MyState, HTMLStencilElement {
+    }
+    var HTMLMyStateElement: {
+        prototype: HTMLMyStateElement;
+        new (): HTMLMyStateElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "my-events": HTMLMyEventsElement;
@@ -90,6 +98,7 @@ declare global {
         "my-methods": HTMLMyMethodsElement;
         "my-properties": HTMLMyPropertiesElement;
         "my-reactive-data": HTMLMyReactiveDataElement;
+        "my-state": HTMLMyStateElement;
     }
 }
 declare namespace LocalJSX {
@@ -114,6 +123,8 @@ declare namespace LocalJSX {
     interface MyReactiveData {
         "activated"?: boolean;
     }
+    interface MyState {
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
         "my-events": MyEvents;
@@ -123,6 +134,7 @@ declare namespace LocalJSX {
         "my-methods": MyMethods;
         "my-properties": MyProperties;
         "my-reactive-data": MyReactiveData;
+        "my-state": MyState;
     }
 }
 export { LocalJSX as JSX };
@@ -137,6 +149,7 @@ declare module "@stencil/core" {
             "my-methods": LocalJSX.MyMethods & JSXBase.HTMLAttributes<HTMLMyMethodsElement>;
             "my-properties": LocalJSX.MyProperties & JSXBase.HTMLAttributes<HTMLMyPropertiesElement>;
             "my-reactive-data": LocalJSX.MyReactiveData & JSXBase.HTMLAttributes<HTMLMyReactiveDataElement>;
+            "my-state": LocalJSX.MyState & JSXBase.HTMLAttributes<HTMLMyStateElement>;
         }
     }
 }
