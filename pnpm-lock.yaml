@@ -4,12 +4,14 @@ specifiers:
   '@stencil/core': ^3.0.0
   '@types/jest': ^27.5.2
   '@types/node': ^16.18.11
+  '@use-gesture/vanilla': ^10.2.25
   jest: ^27.5.1
   jest-cli: ^27.5.1
   puppeteer: ^19.5.2
 
 dependencies:
   '@stencil/core': 3.2.0
+  '@use-gesture/vanilla': 10.2.25
 
 devDependencies:
   '@types/jest': 27.5.2
@@ -706,6 +708,16 @@ packages:
       '@types/node': 16.18.16
     dev: true
     optional: true
+
+  /@use-gesture/core/10.2.25:
+    resolution: {integrity: sha512-tn01i1//mZrv+9VwyGB4KiuA6fQWvPfzwJNwcjxtMBeW0ELBukXOimvdm3hztxkpVwlz8dhQnXzkjtsxSpe9VA==}
+    dev: false
+
+  /@use-gesture/vanilla/10.2.25:
+    resolution: {integrity: sha512-4nTUfKinoj8gn3AeToMjT54bY7//0Yn8UGxTytWt2r1eQIwO+ED1ke1PTe3mjPr1M7q86BGet7i5cNIEnf/0Dg==}
+    dependencies:
+      '@use-gesture/core': 10.2.25
+    dev: false
 
   /abab/2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
