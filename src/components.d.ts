@@ -6,6 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface ImageViewer {
+    }
     interface MyComponent {
     }
     interface MyEvents {
@@ -35,6 +37,12 @@ export interface MyEventsCustomEvent<T> extends CustomEvent<T> {
     target: HTMLMyEventsElement;
 }
 declare global {
+    interface HTMLImageViewerElement extends Components.ImageViewer, HTMLStencilElement {
+    }
+    var HTMLImageViewerElement: {
+        prototype: HTMLImageViewerElement;
+        new (): HTMLImageViewerElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -90,6 +98,7 @@ declare global {
         new (): HTMLMyStateElement;
     };
     interface HTMLElementTagNameMap {
+        "image-viewer": HTMLImageViewerElement;
         "my-component": HTMLMyComponentElement;
         "my-events": HTMLMyEventsElement;
         "my-function-component": HTMLMyFunctionComponentElement;
@@ -102,6 +111,8 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface ImageViewer {
+    }
     interface MyComponent {
     }
     interface MyEvents {
@@ -126,6 +137,7 @@ declare namespace LocalJSX {
     interface MyState {
     }
     interface IntrinsicElements {
+        "image-viewer": ImageViewer;
         "my-component": MyComponent;
         "my-events": MyEvents;
         "my-function-component": MyFunctionComponent;
@@ -141,6 +153,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "image-viewer": LocalJSX.ImageViewer & JSXBase.HTMLAttributes<HTMLImageViewerElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "my-events": LocalJSX.MyEvents & JSXBase.HTMLAttributes<HTMLMyEventsElement>;
             "my-function-component": LocalJSX.MyFunctionComponent & JSXBase.HTMLAttributes<HTMLMyFunctionComponentElement>;
